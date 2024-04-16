@@ -7,38 +7,38 @@ public class Money {
     static final float cambioGBPtoEUR = (float) 1.165826;
 
     static float change(TipoMoneda origen, TipoMoneda destino, float money){
-        if (money < 0){
+        if (money < 0 || origen == TipoMoneda.PTS || destino == TipoMoneda.PTS){
             return -1;
         }
 
         if (origen == TipoMoneda.EUR && destino == TipoMoneda.USD){
-            EURtoUSD(money);
+            return EURtoUSD(money);
         }
 
         if (origen == TipoMoneda.USD && destino == TipoMoneda.EUR){
-            USDtoEUR(money);
+            return USDtoEUR(money);
         }
 
         if (origen == TipoMoneda.EUR && destino == TipoMoneda.GBP){
-            EURtoGBP(money);
+            return EURtoGBP(money);
         }
 
         if (origen == TipoMoneda.GBP && destino == TipoMoneda.EUR){
-            GBPtoEUR(money);
+            return GBPtoEUR(money);
         }
 
         if (origen == TipoMoneda.USD && destino == TipoMoneda.GBP){
-            USDtoGBP(money);
+            return USDtoGBP(money);
         }
 
         if (origen == TipoMoneda.GBP && destino == TipoMoneda.USD){
-            GBPtoUSD(money);
+            return GBPtoUSD(money);
         }
         return 0;
     }
 
     static float EURtoUSD(float cantidad) {
-        return (float) (cantidad * cambioEURtoUSD);
+        return cantidad * cambioEURtoUSD;
     }
 
     static float USDtoEUR(float cantidad) {
